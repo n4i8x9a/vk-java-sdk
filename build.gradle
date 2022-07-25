@@ -1,6 +1,6 @@
 subprojects {
     apply plugin: 'java'
-
+    apply plugin: 'maven-publish'
     group 'com.vk.api'
     version '1.0.14'
 
