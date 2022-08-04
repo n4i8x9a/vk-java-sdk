@@ -7,6 +7,7 @@ import com.vk.api.sdk.objects.board.TopicComment;
 import com.vk.api.sdk.objects.callback.*;
 import com.vk.api.sdk.objects.callback.messages.CallbackMessage;
 import com.vk.api.sdk.objects.messages.Message;
+import com.vk.api.sdk.objects.messages.MessageEventObject;
 import com.vk.api.sdk.objects.photos.Photo;
 import com.vk.api.sdk.objects.video.Video;
 import com.vk.api.sdk.objects.wall.WallComment;
@@ -32,6 +33,10 @@ public abstract class EventsHandler {
     }
 
     protected void messageNew(Integer groupId, MessageObject message) {
+        LOG.error(OVERRIDING_ERR);
+    }
+
+    protected void messageEvent(Integer groupId, MessageEventObject messageEventObject) {
         LOG.error(OVERRIDING_ERR);
     }
 
@@ -187,6 +192,9 @@ public abstract class EventsHandler {
         switch (message.getType()) {
             case CONFIRMATION:
                 return confirmation();
+            case MESSAGE_EVENT:
+                messageEvent(message.getGroupId(), designateObject(message.getObject(), message.getType()));
+                break;
             case MESSAGE_NEW:
                 messageNew(message.getGroupId(), designateObject(message.getObject(), message.getType()));
                 break;

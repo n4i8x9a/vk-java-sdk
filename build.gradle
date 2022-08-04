@@ -2,7 +2,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'maven-publish'
     group 'com.vk.api'
-    version '1.0.14.n4i8x9a-fork'
+    version '1.0.14.n4i8x9a-fork.0.0.1'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
